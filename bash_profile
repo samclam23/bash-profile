@@ -21,8 +21,8 @@
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="________________________________________________________________________________\n| \w @ \h (\u) \n| => "
-    export PS2="| => "
+    export PS1="________________________________________________________________________________\n| \w @ \u \n| <> "
+    export PS2="| <~> "
 
 #   Set Paths
 #   ------------------------------------------------------------
@@ -57,13 +57,12 @@ alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
-alias ..='cd ../'                           # Go back 1 directory level
-alias ...='cd ../../'                       # Go back 2 directory levels
-alias .3='cd ../../../'                     # Go back 3 directory levels
-alias .4='cd ../../../../'                  # Go back 4 directory levels
-alias .5='cd ../../../../../'               # Go back 5 directory levels
-alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias edit='subl'                           # edit:         Opens any file in sublime editor
+alias cd1='cd ../'                           # Go back 1 directory level
+alias cd2='cd ../../'                       # Go back 2 directory levels
+alias cd3='cd ../../../'                     # Go back 3 directory levels
+alias cd4='cd ../../../../'                  # Go back 4 directory levels
+alias cd5='cd ../../../../../'               # Go back 5 directory levels
+alias cd6='cd ../../../../../../'            # Go back 6 directory levels
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
@@ -72,6 +71,25 @@ alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable 
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
+alias home='cd ~'			    # Go back to the home directory
+alias hog='cd ~/Hogwarts'		    # Go to where the magic happens
+alias sb=setBash	    	    # set this file as my bash 
+
+#   Open files with various programs
+#   -------------------------------------
+alias sub='open -a "Sublime Text"'          # Open a file in Sublime Text, or just open Sublime Text
+alias vs='open -a "Visual Studio Code"'          # Open a file in Visual Studio, or just open Visual Studio
+alias pyc='open -a "PyCharm CE"'               # Open a file in PyCharm, or just open PyCharm
+alias cr='open -a "Google Chrome"'          # Open a file in Google Chrome, or just open Google Chrome
+
+#   sb: Save this profile to my home folder and set it 
+#   ---------------------------------------------------
+    setBash (){
+        cp ~/Hogwarts/bash-profile/bash_profile ~/.bash_profile
+        #wip -> need auto yes feature via expect
+        source ~/.bash_profile
+    }
+
 mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
 trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
