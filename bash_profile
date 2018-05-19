@@ -29,9 +29,11 @@
     export PATH="$PATH:/usr/local/bin/"
     export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
+    export PYTHON="/usr/local/bin/python3"
+
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
-    export EDITOR=/usr/bin/nano
+    # export EDITOR=/usr/bin/nano
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -290,7 +292,6 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #   This setting is for the new UTF-8 terminal support
     export LC_CTYPE=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
-
 
 #   ---------------------------------------
 #   10.  REMINDERS & NOTES
