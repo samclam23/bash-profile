@@ -1,5 +1,5 @@
 #  ---------------------------------------------------------------------------
-#
+#  
 #  Description:  This file holds all my BASH configurations and aliases
 #
 #  Sections:
@@ -76,6 +76,7 @@ alias cic='set completion-ignore-case On'   # cic:          Make tab-completion 
 alias home='cd ~'			    # Go back to the home directory
 alias hog='cd ~/Hogwarts'		    # Go to where the magic happens
 alias sb=setBash	    	    # set this file as my bash 
+alias pi=sshPi                  #ssh into the Raspberry Pi
 
 #   Open files with various programs
 #   -------------------------------------
@@ -87,10 +88,21 @@ alias cr='open -a "Google Chrome"'          # Open a file in Google Chrome, or j
 #   sb: Save this profile to my home folder and set it 
 #   ---------------------------------------------------
     setBash (){
-        cp ~/Hogwarts/bash-profile/bash_profile ~/.bash_profile
-        #wip -> need auto yes feature via expect
-        source ~/.bash_profile
+        echo yes | cp ~/Hogwarts/bash-profile/bash_profile ~/.bash_profile
+        source ~/.zsh
     }
+
+#   pi:  ssh into my Raspberry Pi
+#   ---------------------------------------------------
+    sshPi (){
+        ssh pi@192.168.1.119
+    }    
+
+#   plex:  ssh into the PLEX network
+#   ---------------------------------------------------
+    sshPlex (){
+        ssh plex-download.herack.net -lroot
+    }      
 
 mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
 trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
